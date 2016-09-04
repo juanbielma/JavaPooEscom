@@ -5,8 +5,6 @@
 * relacionada con el desbordamiento de cada tipo de dato.
 */
 
-import java.util.Scanner;
-
 public class Tipo{
 	private byte b;
 	private short s;
@@ -39,68 +37,19 @@ public class Tipo{
 	}
 
 	public void seleccionar(){
-		Scanner in;
-
-		String opc="";
-        boolean again = true;
-
-        while(again){
-
-            in=new Scanner(System.in);
-
+		
             System.out.println("\tPROBADOR DE TIPOS\n");
-            System.out.println("\tMenu de tipos\n");
-            System.out.println("\ta)byte");
-            System.out.println("\tb)short");
-            System.out.println("\tc)int");
-            System.out.println("\td)long");
-            System.out.println("\te)float");
-            System.out.println("\tf)double");
-            System.out.println("\tg)char");
-            System.out.println("\th)String");
-            System.out.println("\ti)boolean");
-            System.out.print("\tSeleccione una opcion: ");
-            opc=in.next();
-            switch(opc){
-                case "a":
-                    mostrarTipo(b);
-                break;
-                case "b":
-                    mostrarTipo(s);
-                break;
-                case "c":
-                    mostrarTipo(i);
-                break;
-                case "d":
-                    mostrarTipo(l);
-                break;
-                case "e":
-                    mostrarTipo(f);
-                break;
-                case "f":
-                    mostrarTipo(d);
-                break;
-                case "g":
-                    mostrarTipo(c);
-                break;
-                case "h":
-                    mostrarTipo(str);
-                break;
-                case "i":
-                    mostrarTipo(bool);
-                break;
-                default:
-                    System.out.println("Escoge una opción valida");
-                break;
-            }
+			mostrarTipo(b);
+			mostrarTipo(s);
+			mostrarTipo(i);
+			mostrarTipo(l);
+			mostrarTipo(f);
+			mostrarTipo(d);
+			mostrarTipo(c);
+			mostrarTipo(str);
+			mostrarTipo(bool);
             
-            System.out.println("Continuar? Y/N");
-            String respuesta = in.next(); 
-            
-            again = (respuesta.equals("Y") || respuesta.equals("y"));
-            System.out.print("\033[H\033[2J");
-
-        }
+        
 	}
 	public void mostrarTipo(byte byt){
 		b=Byte.MIN_VALUE;//Para el tipo de dato byte, el límite de desbordamiento es de -128 para valores negativos
