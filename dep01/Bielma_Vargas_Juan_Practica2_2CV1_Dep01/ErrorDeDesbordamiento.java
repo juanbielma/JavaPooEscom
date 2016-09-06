@@ -8,11 +8,11 @@
 
  public class ErrorDeDesbordamiento extends Applet
  {
-   private Resultado resultado;   
+   private Resultado resultado;
 
     public void init(){
       resultado = new Resultado();
-      resultado.setPositivo( 500000000000000L + 5000000000000L);
+      resultado.setPositivo(500000000000000L + 5000000000000L);
       resultado.setNegativo(-2 - 2000000000000L);
     }
   

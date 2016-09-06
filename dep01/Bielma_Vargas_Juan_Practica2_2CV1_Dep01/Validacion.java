@@ -1,8 +1,9 @@
 public class Validacion{
+  private boolean valido;
 
-
-  public static boolean isNumeric(String str) {
-        return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("")==false);
+  public boolean isNumeric(String str) {
+        valido = (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("")==false);
+        return valido;
     }
 
 }

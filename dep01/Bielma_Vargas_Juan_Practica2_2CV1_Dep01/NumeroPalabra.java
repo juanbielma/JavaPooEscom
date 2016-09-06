@@ -40,17 +40,21 @@ public class NumeroPalabra {
     " veintiuno",
     " veintidos",
     " veintitres",
-    " vienticuatro",
-    " vienticinco",
-    " vientiseis",
-    " vientisiete",
-    " vientiocho",
+    " veinticuatro",
+    " veinticinco",
+    " veintiseis",
+    " veintisiete",
+    " veintiocho",
     " veintinueve",
   };
 
-  private NumeroPalabra() {}
+  private String resultado;
 
-  private static String convertirMenorAMil(int numero) {
+  public NumeroPalabra() {
+    resultado = "";
+  }
+
+  private String convertir(int numero) {
     String numeroPalabra = "";
 
     if (numero % 100 < 30){
@@ -75,17 +79,17 @@ public class NumeroPalabra {
     return numeros[numero] + "cientos" + numeroPalabra;
   }
 
-
-  public static String convertir(double numero) {
+  public String convertir(double numero) {
 
     long pesos = (long)Math.floor( numero ) ;
     long centavos = (long)(Math.round(-1f * (numero - pesos ) * 100f) * -1f);
 
-    return (convertir(pesos) + " punto " + convertir(centavos) + " MXN").toUpperCase();
+    resultado = (convertir(pesos) + " punto " + convertir(centavos) + " MXN").toUpperCase();
 
+    return resultado;
   }
 
-  public static String convertir(long numero){ 
+  private String convertir(long numero){ 
     // 0 to 999 999 999 999
    if (numero == 0) { return "cero"; }
 
@@ -115,7 +119,7 @@ public class NumeroPalabra {
       tradBillions = "un billon ";
       break;
     default :
-      tradBillions = convertirMenorAMil(billions)
+      tradBillions = convertir(billions)
       + " billones ";
     }
     String result =  tradBillions;
@@ -129,7 +133,7 @@ public class NumeroPalabra {
       tradMillions = "un millon ";
       break;
     default :
-      tradMillions = convertirMenorAMil(millions)
+      tradMillions = convertir(millions)
          + " millones ";
     }
     result =  result + tradMillions;
@@ -143,17 +147,21 @@ public class NumeroPalabra {
       tradHundredThousands = "mil ";
       break;
     default :
-      tradHundredThousands = convertirMenorAMil(hundredThousands)
+      tradHundredThousands = convertir(hundredThousands)
          + " mil ";
     }
     result =  result + tradHundredThousands;
 
     String tradThousand;
-    tradThousand = convertirMenorAMil(thousands);
+    tradThousand = convertir(thousands);
     result =  result + tradThousand;
 
     // remove extra spaces!
     return result.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ");
   }
 
+  public void destruir(){
+    resultado = null;
+    System.gc();
+  }
 }
